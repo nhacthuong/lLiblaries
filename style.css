@@ -142,13 +142,29 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-main);
-    /*overflow-y: auto;*/
 }
 
 .main-nav {
     padding: 12px 24px;
     border-bottom: 1px solid var(--border-default);
     background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.5em;
+}
+
+.main-nav div {
+    display: flex;
+    align-items: stretch;
+}
+
+.main-nav img {
+    height: 100%;       /* Bắt buộc cao bằng div cha */
+    width: 100%;        /* Phủ kín chiều ngang */
+    object-fit: cover;  /* Quan trọng: Giữ tỉ lệ ảnh, cắt bớt phần thừa thay vì làm méo ảnh */
+    display: block;
+    max-height: 34px;
 }
 
 .search-bar {
