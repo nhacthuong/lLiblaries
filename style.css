@@ -9,12 +9,9 @@
 
 :root {
     /* GitHub Dark Dimmed Palette */
-    /*--bg-main: #0d1117;*/
-    /*--bg-main: #18211C;*/
     --bg-main: #18211C;
     --ghost-red-green: #1F1D1A;
     --bg-canvas: #161b22;
-    /*--border-default: #30363d;*/
     --border-default: rgba(175, 245, 180, 0.3);
     --text-primary: #adbac7;
     --text-white: #f0f6fc;
@@ -30,10 +27,23 @@
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 14px;
+    --box-left: inset 15px 0 15px -15px rgba(139, 0, 0, 0.3);
+    --box-right: inset -15px 0 15px -15px rgba(139, 0, 0, 0.3);
 }
 
-.hidden-red-box {
-  box-shadow: inset 0 0 15px rgba(139, 0, 0, 0.15);
+/* Khi người dùng chọn Dark Mode */
+[data-theme="black"] {
+    --bg-main: #080808;
+    --border-default: #30363d;
+    --box-left: inset 15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --box-right: inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
+}
+
+.box-left {
+  box-shadow: var(--box-left);
+}
+.box-right {
+  box-shadow: var(--box-right);
 }
 
 body {
@@ -150,6 +160,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-main);
+    min-height: 100vh;
 }
 
 .main-nav {
@@ -160,11 +171,12 @@ body {
     justify-content: center;
     align-items: stretch;
     gap: 0.5em;
+    position: sticky;
+    top: 0;
 }
 
 .main-nav div {
     display: flex;
-    align-items: stretch;
 }
 
 .main-nav img {
@@ -172,7 +184,7 @@ body {
     width: 100%;        /* Phủ kín chiều ngang */
     object-fit: cover;  /* Quan trọng: Giữ tỉ lệ ảnh, cắt bớt phần thừa thay vì làm méo ảnh */
     display: block;
-    max-height: 34px;
+    max-height: 30px;
 }
 
 .search-bar {
@@ -204,6 +216,7 @@ body {
     max-width: 900px;
     margin: 0 auto;
     width: 100%;
+    min-height: 100vh;
 }
 
 h1 {
@@ -315,7 +328,7 @@ h1 {
 .right-panel {
     width: 320px;
     padding: 32px 20px;
-    border-left: 1px solid var(--border-default);
+/*    border-left: 1px solid var(--border-default);*/
     flex-shrink: 0;
 }
 
@@ -403,4 +416,25 @@ h1 {
     max-height: 100%;
     object-fit: contain;   /* Thu phóng ảnh nhưng giữ nguyên tỉ lệ, nằm gọn trong div */
     display: block;
+}
+
+.theme-change {
+/*    margin: 0.5em 0;*/
+    display: flex;
+/*    justify-content: center;*/
+/*    align-items: stretch;*/
+}
+.theme-change * {
+    margin: 0.3em;
+    padding: 0.3em 2em;
+    border-radius: 20px;
+    flex: 1;
+}
+.theme-change button[name="black"] {
+    background-color: #080808;
+    color: #7ee787;
+}
+.theme-change button[name="green"] {
+    background-color: #39663d;
+    color: var(--accent-red);
 }
