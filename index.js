@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    const htmlElement = document.documentElement; // Chính là thẻ <html>
+
     $('.nav-tree').html(buildTree(menu));
     addCardMeta();
 
@@ -29,4 +31,21 @@ $(document).ready(function() {
         $(this).addClass('active');
         console.log("Mở nội dung bài viết ID:", $(this).data('id'));
     });
+
+    $(document).on('click', '.theme-toggle', function(e) {
+        let name=e.currentTarget.name;
+        let oldname=htmlElement.getAttribute('data-theme');
+        // Kiểm tra xem hiện tại có phải dark không
+        if (oldname === name) {
+            htmlElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', name); // Lưu lựa chọn của người dùng
+        } else {
+            htmlElement.setAttribute('data-theme', name);
+            localStorage.setItem('theme', name); // Lưu lựa chọn của người dùng
+        }
+    });
+
+    // Tự động áp dụng theme cũ khi người dùng load lại trang
+    const savedTheme = localStorage.getItem('theme');
+    htmlElement.setAttribute('data-theme', savedTheme);
 });
