@@ -45,5 +45,5 @@ function addCardMeta(){
     '<button class="star-btn"><i class="fa-solid fa-circle-down"></i>Kém</button>' +
     '<button class="star-btn"><i class="fa-solid fa-share-nodes"></i>Chia sẻ</button>' +
     '</div>';
-    $('.feed-card').append(html);
+    $('.card-top').after(html);
 }
