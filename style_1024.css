@@ -1,0 +1,7 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Điều chỉnh kích thước font, ẩn các thành phần không cần thiết 
+       hoặc chuyển menu sang dạng rút gọn */
+    .sidebar, .right-panel {
+        display: none;
+    }
+}
