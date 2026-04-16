@@ -1,7 +1,57 @@
 @media (max-width: 767px) {
     /* Điều chỉnh kích thước font, ẩn các thành phần không cần thiết 
        hoặc chuyển menu sang dạng rút gọn */
-    .sidebar, .right-panel {
+    .main-nav {
+        height: 6vh;
+        max-height: 6vh;
+    }
+    .sidebar-top, .side-search, .right-panel {
         display: none;
+    }
+    .screen-767 {
+        display: block !important;
+    }
+    .screen-max {
+        display: none !important;
+    }
+    .sidebar {
+        position: fixed;
+        top: 6vh;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        border-right: none;
+        backdrop-filter: blur(4px);
+        background-color: unset;
+        padding-top: 0; padding-bottom: 0;
+        display: none;
+    }
+    .nav-tree {
+        background-color: var(--bg-main);
+        width: fit-content;
+        padding-right: 2em;
+        border-right: 1px solid var(--border-default);
+        padding-top: 1em; padding-bottom: 1em;
+    }
+    .main-nav {
+        align-items: center;
+    }
+    .main-nav div {
+        justify-content: center;
+        align-items: center;
+        min-height: 30px; min-width: 30px; 
+    }
+    .main-nav img {
+        cursor: pointer;
+    }
+    .search-bar {
+        padding: 0.1em 0.6em;
+        border-radius: 80px;
+        margin: 0 2em;
+    }
+    .content-body {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
     }
 }
