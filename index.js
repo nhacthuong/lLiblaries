@@ -2,7 +2,7 @@ $(document).ready(function() {
     const htmlElement = document.documentElement; // Chính là thẻ <html>
 
     $('.nav-tree').html(buildTree(menu));
-    addCardMeta();
+    addPosts(posts);
 
     // Xử lý Expand/Unexpand cho Folder
     $(document).on('click', '.item-folder', function(e) {
