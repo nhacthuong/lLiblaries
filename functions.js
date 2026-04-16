@@ -1,3 +1,9 @@
+function openSearch() {
+    const m = document.getElementById('searchModal');
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    if(m.style.display === 'flex') document.getElementById('modalInput').focus();
+}
+
 function buildTree(data, parentId = null) {
     let html = '';
     const children = data.filter(item => item.parent_id === parentId);
@@ -38,12 +44,39 @@ function buildTree(data, parentId = null) {
     return html;
 }
 
-function addCardMeta(){
-    let html='<div class="card-meta">' +
-    '<span>★ 1.2 karma</span>' +
-    '<button class="star-btn"><i class="fa-solid fa-circle-up"></i>Thích</button>' +
-    '<button class="star-btn"><i class="fa-solid fa-circle-down"></i>Kém</button>' +
-    '<button class="star-btn"><i class="fa-solid fa-share-nodes"></i>Chia sẻ</button>' +
-    '</div>';
-    $('.card-top').after(html);
+function addPosts(posts) {
+    if (!posts || posts.length === 0) return;
+
+    // Chuyển mảng dữ liệu thành mảng các chuỗi HTML
+    const htmlBuffer = posts.map(p => {
+        // Xử lý phần media nếu có
+        const mediaHtml = p["card-media"] 
+            ? `<div class="card-media">${p["card-media"]}</div>` 
+            : "";
+
+        return `
+            <div class="feed-card" post_id="${p.id}">
+                <div class="card-top">
+                    <span class="repo-link">${p["repo-link"]}</span>
+                    <button class="star-btn">★ Lưu</button>
+                </div>
+                ${mediaHtml}
+                <p class="card-content">${p["card-content"]}</p>
+                <div class="card-meta">
+                    <span>★ 1.2 karma</span>
+                    <button class="star-btn"><i class="fa-solid fa-circle-up"></i> Thích</button>
+                    <button class="star-btn"><i class="fa-solid fa-circle-down"></i> Kém</button>
+                    <button class="star-btn"><i class="fa-solid fa-share-nodes"></i> Chia sẻ</button>
+                </div>
+            </div>`;
+    });
+
+    // Append một lần duy nhất vào container
+    $('.feed-section').append(htmlBuffer.join(''));
+}
+
+function openMenuLeft() {
+    const m = document.getElementsByClassName('sidebar')[0];
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    // if(m.style.display === 'flex') document.getElementById('modalInput').focus();
 }
