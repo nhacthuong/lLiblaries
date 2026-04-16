@@ -1,135 +1,74 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mật Tạng Thư Viện</title>
-    <link rel="icon" type="image/png" href="./favico.svg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_767.css">
-    <link rel="stylesheet" href="style_1024.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="./data.js"></script>
-    <script type="text/javascript" src="./functions.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
-</head>
-<body>
-    <div class="app-wrapper">
-        <aside class="sidebar box-right">
-            <div class="sidebar-top">
-                <span class="brand">Mật Tạng Thư Viện</span>
-                <button class="btn-action">Gieo Quẻ</button>
-            </div>
-            <input type="text" class="side-search" placeholder="Tìm tài liệu...">
-            
-            <nav class="nav-tree"></nav>
-        </aside>
-
-        <main class="main-content">
-            <header class="main-nav">
-                <div><img src="./favico.svg" /></div>
-                <div class="search-bar" onclick="openSearch()">
-                    <i class="fas fa-search"></i>
-                    <span>Bấm <strong>/</strong> để tra cứu</span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mật Tạng Thư Viện</title>
+        <link rel="icon" type="image/png" href="./favico.svg">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style_767.css">
+        <link rel="stylesheet" href="style_1024.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="./data.js" defer></script>
+        <script type="text/javascript" src="./functions.js" defer></script>
+        <script type="text/javascript" src="./index.js" defer></script>
+    </head>
+    <body>
+        <div class="app-wrapper">
+            <!-- left-colum menu -->
+            <aside class="sidebar box-right" onclick="openMenuLeft()">
+                <div class="sidebar-top">
+                    <span class="brand">Mật Tạng Thư Viện</span>
+                    <button class="btn-action">Gieo Quẻ</button>
                 </div>
-            </header>
-
-            <div class="content-body">  
-                <div class="feed-section">
-                    <div class="feed-card">
-                        <h3 style="margin-bottom: 0.3em;">Đổi giao diện</h3>
-                        <div class="theme-change" style="margin-bottom: 1em">
-                            <button class="theme-toggle" name="black">Đen</button>
-                            <button class="theme-toggle" name="green">Xanh</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- <h1>Bảng tin Thư Viện</h1>
+                <input type="text" class="side-search" placeholder="Tìm tài liệu...">
                 
-                <div class="ai-input-zone">
-                    <textarea placeholder="Hỏi AI về ý nghĩa quẻ dịch hoặc lá số..."></textarea>
-                    <div class="ai-footer">
-                        <div class="ai-btns">
-                            <button><i class="fas fa-magic"></i> Luận giải</button>
-                            <button><i class="fas fa-book-open"></i> Tra cứu</button>
-                        </div>
-                        <button class="btn-send">➤</button>
+                <nav class="nav-tree"></nav>
+            </aside>
+            <!-- center-colum -->
+            <main class="main-content">
+                <header class="main-nav">
+                    <div class="screen-767"><img src="./favico.svg"  onclick="openMenuLeft()" /></div>
+                    <div class="screen-max"><img src="./favico.svg" /></div>
+                    <div class="search-bar" onclick="openSearch()">
+                        <i class="fas fa-search screen-max"></i>
+                        <span>Bấm <strong>/</strong> để tra cứu</span>
                     </div>
-                </div> -->
+                    <div><i class="fas fa-ellipsis-h screen-767"></i></div>
+                </header>
 
-                <div class="feed-section">
-                    <div class="feed-card">
-                        <div class="card-top">
-                            <span class="repo-link">01_Tu_Vi / Tu-Vi.md</span>
-                            <button class="star-btn">★ Lưu</button>
+                <div class="content-body">  
+                    <!-- card-info -->
+                    <div class="feed-section">
+                        <div class="feed-card">
+                            <h3 style="margin-bottom: 0.3em;">Đổi giao diện</h3>
+                            <div class="theme-change" style="margin-bottom: 1em">
+                                <button class="theme-toggle" name="black">Đen</button>
+                                <button class="theme-toggle" name="green">Xanh</button>
+                            </div>
                         </div>
-                        <p>Cập nhật điển tích về sao Tử Vi - Vị vua trong hệ thống chính tinh.</p>
-                        <!-- <div class="card-meta">● Markdown <span>★ 1.2k</span></div> -->
-                    </div>
-                </div>
-
-                <!-- <h1>Hoạt động mới</h1> -->
-                <div class="feed-section">
-                    <div class="feed-card">
-                        <div class="card-top">
-                            <span class="repo-link">01_Tu_Vi / Tu-Vi.md</span>
-                            <button class="star-btn">★ Lưu</button>
-                        </div>
-                        <div class="card-media">
-                            <iframe src="https://www.youtube-nocookie.com/embed/l8ToeCYczFs?si=RAmJp2gd35cQB7ew" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <p>Cập nhật điển tích về sao Tử Vi - Vị vua trong hệ thống chính tinh.</p>
-                        <!-- <div class="card-meta">● Markdown <span>★ 1.2k</span></div> -->
                     </div>
                 </div>
-                <div class="feed-section">
-                    <div class="feed-card">
-                        <div class="card-top">
-                            <span class="repo-link">01_Tu_Vi / Tu-Vi.md</span>
-                            <button class="star-btn">★ Lưu</button>
-                        </div>
-                        <div class="card-media">
-                            <img src="https://preview.redd.it/2-5-million-indians-served-in-wwii-90-000-died-thousands-v0-1p125mbik5vg1.jpeg?auto=webp&s=ac7840d59008428837047fa00c4054a542d0f03c" />
-                        </div>
-                        <p>Cập nhật điển tích về sao Tử Vi - Vị vua trong hệ thống chính tinh.</p>
-<!--                         <div class="card-meta">
-                            <span>★ 1.2 karma</span>
-                            <button class="star-btn"><i class="fa-solid fa-circle-up"></i>Thích</button>
-                            <button class="star-btn"><i class="fa-solid fa-circle-down"></i>Kém</button>
-                            <button class="star-btn"><i class="fa-solid fa-share-nodes"></i>Chia sẻ</button>
-                        </div> -->
-                    </div>
+            </main>
+            <!-- right-column sticky info -->
+            <aside class="right-panel">
+                <div class="news-card box-left">
+                    <h3>Cập nhật mới</h3>
+                    <ul>
+                        <li><small>2h trước</small> <p>Bổ sung giải mã quẻ Thuần Càn.</p></li>
+                        <li><small>5h trước</small> <p>Video AI: Sự tích Văn Khúc.</p></li>
+                    </ul>
                 </div>
-
-            </div>
-        </main>
-
-        <aside class="right-panel">
-            <div class="news-card box-left">
-                <h3>Cập nhật mới</h3>
-                <ul>
-                    <li><small>2h trước</small> <p>Bổ sung giải mã quẻ Thuần Càn.</p></li>
-                    <li><small>5h trước</small> <p>Video AI: Sự tích Văn Khúc.</p></li>
-                </ul>
-            </div>
-        </aside>
-    </div>
-
-    <div id="searchModal" class="modal">
-        <div class="modal-content">
-            <input type="text" id="modalInput" placeholder="Tìm tên sao, quẻ dịch...">
-            <div class="modal-hints">Gợi ý: <i>Sao Tử Vi, Quẻ Càn, Cách cục Cơ Nguyệt Đồng Lương...</i></div>
+            </aside>
         </div>
-        <div class="modal-close" onclick="openSearch()"></div>
-    </div>
-
-    <script>
-        function openSearch() {
-            const m = document.getElementById('searchModal');
-            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-            if(m.style.display === 'flex') document.getElementById('modalInput').focus();
-        }
-    </script>
-</body>
+        <!-- modal-search -->
+        <div id="searchModal" class="modal">
+            <div class="modal-content">
+                <input type="text" id="modalInput" placeholder="Tìm tên sao, quẻ dịch...">
+                <div class="modal-hints">Gợi ý: <i>Sao Tử Vi, Quẻ Càn, Cách cục Cơ Nguyệt Đồng Lương...</i></div>
+            </div>
+            <div class="modal-close" onclick="openSearch()"></div>
+        </div>
+    </body>
 </html>
