@@ -119,7 +119,7 @@ body {
 .nav-tree {
     flex-grow: 1;
     overflow-y: auto;
-    padding-right: 8px;
+    /*! padding-right: 8px; */
 }
 
 /* Tùy chỉnh thanh cuộn siêu mỏng */
@@ -127,7 +127,7 @@ body {
 .nav-tree::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 10px; }
 
 .nav-item {
-    padding: 6px 10px;
+    padding: 6px 0;
     border-radius: var(--radius-sm);
     cursor: pointer;
     display: flex;
@@ -180,11 +180,14 @@ body {
 }
 
 .main-nav img {
-    height: 100%;       /* Bắt buộc cao bằng div cha */
+    height: 30px;       /* Bắt buộc cao bằng div cha */
     width: 100%;        /* Phủ kín chiều ngang */
     object-fit: cover;  /* Quan trọng: Giữ tỉ lệ ảnh, cắt bớt phần thừa thay vì làm méo ảnh */
     display: block;
     max-height: 30px;
+}
+.main-nav i {
+    font-size: 1.2em;
 }
 
 .search-bar {
@@ -193,8 +196,6 @@ body {
     padding: 6px 16px;
     border-radius: var(--radius-md);
     width: 100%;
-    display: flex;
-    align-items: center;
     gap: 10px;
     color: var(--text-muted);
     font-size: 13px;
@@ -437,4 +438,11 @@ h1 {
 .theme-change button[name="green"] {
     background-color: #39663d;
     color: var(--accent-red);
+}
+
+.screen-767 {
+    display: none !important;
+}
+.screen-max {
+    display: block !important;
 }
