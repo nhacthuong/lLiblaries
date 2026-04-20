@@ -4,6 +4,20 @@ function openSearch() {
     if(m.style.display === 'flex') document.getElementById('modalInput').focus();
 }
 
+function openPopup(title=null, content=null) {
+    const m = document.getElementById('infoPopup');
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    if(title !== null)
+        $('#infoPopup h1').text(title);
+    if(content !== null)
+        $('#infoPopup .popup-content').html(content);
+}
+
+function openMenuLeft() {
+    const m = document.getElementById('menuLeft');
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+}
+
 function buildTree(data, parentId = null) {
     let html = '';
     const children = data.filter(item => item.parent_id === parentId);
@@ -73,10 +87,4 @@ function addPosts(posts) {
 
     // Append một lần duy nhất vào container
     $('.feed-section').append(htmlBuffer.join(''));
-}
-
-function openMenuLeft() {
-    const m = document.getElementsByClassName('sidebar')[0];
-    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-    // if(m.style.display === 'flex') document.getElementById('modalInput').focus();
 }
