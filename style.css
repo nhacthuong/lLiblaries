@@ -166,8 +166,8 @@ body {
     margin-left: 12px;
     padding-left: 12px;
     border-left: 1px solid var(--border-default);
-    margin-top: 4px;
-    margin-bottom: 8px;
+/*    margin-top: 4px;*/
+/*    margin-bottom: 4px;*/
 }
 
 .folder { font-weight: 600; color: var(--text-white); }
