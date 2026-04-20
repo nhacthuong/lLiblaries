@@ -81,9 +81,43 @@ body {
 
 .sidebar-top {
     display: flex;
-    justify-content: space-between;
+/*    justify-content: space-between;*/
     align-items: center;
     margin-bottom: 20px;
+}
+
+.sidebar-top img {
+    width: auto;
+    height: 60px;
+    display: block;
+}
+
+/*.sidebar-top span {    
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: bold;
+    display: flex;
+    align-items: center; 
+    height: 60px; 
+    text-transform: uppercase;
+}*/
+
+.sidebar-top div {
+    flex: 1;
+    line-height: 1.3;
+}
+
+.sidebar-top .brand {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    margin-left: 0.2em;
+}
+
+.sidebar-top .brand:last-child {
+    margin-left: 1.5em;
 }
 
 .sidebar, .right-panel {
