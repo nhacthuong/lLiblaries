@@ -37,11 +37,12 @@
     }
     .main-nav {
         align-items: center;
+        padding: 12px;
     }
     .search-bar {
         padding: 0.1em 0.6em;
         border-radius: 80px;
-        margin: 0 2em;
+        margin: 0 0.5em;
         justify-content: center !important;
     }
     .content-body {
