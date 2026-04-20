@@ -26,6 +26,7 @@ button {
     --accent-gold: #d4af37;
     --accent-red: #ff7b72;
     --accent-red-deep: #9e3b3b;
+    --scroll-bar: rgba(126, 231, 135, 0.5);
     
     /* Rounded Styling */
     --radius-sm: 6px;
@@ -45,6 +46,7 @@ button {
     --box-right: inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
     --box: inset 15px 0 15px -15px rgba(126, 231, 135, 0.9),
             inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --scroll-bar: rgba(139, 90, 43, 0.5);
 }
 
 body {
@@ -129,7 +131,7 @@ body {
     display: block !important;
     /* Tùy chỉnh thanh scroll đẹp cho Opera/Chrome/FF */
     scrollbar-width: thin;
-    scrollbar-color: rgba(139, 90, 43, 0.5) transparent;
+    scrollbar-color: var(--scroll-bar) transparent;
 }
 
 .nav-tree i {
