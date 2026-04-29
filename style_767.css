@@ -2,8 +2,8 @@
     /* Điều chỉnh kích thước font, ẩn các thành phần không cần thiết 
        hoặc chuyển menu sang dạng rút gọn */
     .main-nav {
-        height: 6vh;
-        max-height: 6vh;
+/*        height: 6vh;*/
+/*        max-height: 6vh;*/
     }
     .sidebar-top, .side-search, .right-panel {
         display: none;
@@ -50,6 +50,30 @@
         box-shadow: var(--box);
     }
     .modal-content {
-        width: 80vw;
+        width: 100vw;
+    }
+    .popup {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .popup .popup-title {
+        display: none;
+    }
+    .popup .popup-content {
+        padding: 0;
+        margin: 0.5em 0;
+    }
+    .card-meta > * {
+        flex: 1;
+    }
+    .card-meta button span {
+        display: none;
+    }
+    .card-meta button i {
+        margin: 0;
     }
 }
