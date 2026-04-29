@@ -12,6 +12,558 @@ button {
 }
 
 :root {
+    --bg-main: #18211C;
+/*    --ghost-red-green: #1F1D1A;*/
+    --bg-canvas: #161b22;
+    --border-default: rgba(175, 245, 180, 0.3);
+    --text-primary: #adbac7;
+    --text-white: #f0f6fc;
+    --text-muted: #768390;
+    --text-purple: #d2a8ff;
+    --accent-mint: #7ee787;
+    --accent-mint-lighter: #aff5b4;
+    --accent-green: #347d39;
+    --accent-gold: #d4af37;
+    --accent-red: #ff7b72;
+    --accent-red-deep: #9e3b3b;
+    --scroll-bar: rgba(126, 231, 135, 0.5);
+    --text-blue: #a5d6ff;
+    --text-orange: #ffa657;
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --box-left: inset 15px 0 15px -15px rgba(139, 0, 0, 0.3);
+    --box-right: inset -15px 0 15px -15px rgba(139, 0, 0, 0.3);
+    --box: inset 15px 0 15px -15px rgba(139, 0, 0, 0.3),
+            inset -15px 0 15px -15px rgba(139, 0, 0, 0.3);
+}
+
+/* Khi người dùng chọn Dark Mode */
+[data-theme="black"] {
+    --bg-main: #080808;
+    --border-default: #30363d;
+    --box-left: inset 15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --box-right: inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --box: inset 15px 0 15px -15px rgba(126, 231, 135, 0.9),
+            inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --scroll-bar: rgba(139, 90, 43, 0.5);
+}
+
+/* Khi người dùng chọn Dark Mode */
+[data-theme="white"] {
+    --bg-main: #F5F5DC;
+    --border-default: #347d39;
+    --box-left: inset 15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --box-right: inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --box: inset 15px 0 15px -15px rgba(126, 231, 135, 0.9),
+            inset -15px 0 15px -15px rgba(126, 231, 135, 0.9);
+    --scroll-bar: rgba(126, 231, 135, 0.5);
+    --text-white: #ff5f56;
+    --text-primary: #374151;
+    --accent-mint-lighter: #2ea44f;
+    --text-purple: #a371f7;
+    --text-blue: #0366d6;
+    --accent-red: #ff5f56;
+    --accent-gold: #996515;
+    --text-orange: #f68a1e;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    /*height: 100vh; overflow: hidden; /* Chỉ cuộn ở các vùng riêng biệt */*/
+}
+
+/* 2. Layout Structure */
+.app-wrapper {
+    display: flex;
+    width: 100%;
+    /*height: 100vh;*/
+}
+
+/* 3. Sidebar Trái (Danh mục tàng thư) */
+.sidebar {
+    width: 300px;
+    background-color: var(--bg-main);
+    border-right: 1px solid var(--border-default);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    flex-shrink: 0;
+    box-shadow: var(--box-left);
+    height: 100vh;
+    overflow: hidden !important;
+}
+
+.sidebar-top {
+    display: flex;
+/*    justify-content: space-between;*/
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-top img {
+    width: auto;
+    height: 60px;
+    display: block;
+}
+
+/*.sidebar-top span {    
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: bold;
+    display: flex;
+    align-items: center; 
+    height: 60px; 
+    text-transform: uppercase;
+}*/
+
+.sidebar-top div {
+    flex: 1;
+    line-height: 1.3;
+}
+
+.sidebar-top .brand {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    margin-left: 0.2em;
+}
+
+.sidebar-top .brand:last-child {
+    margin-left: 1.5em;
+}
+
+.sidebar, .right-panel {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Giữ sidebar cao bằng màn hình */
+}
+
+.brand {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent-red);
+    letter-spacing: -0.3px;
+}
+
+.btn-action {
+    background-color: var(--accent-green);
+    color: white;
+    border: 1px solid rgba(240, 246, 252, 0.1);
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.side-search {
+    width: 100%;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-default);
+    color: var(--text-white);
+    padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin-bottom: 16px;
+    outline: none;
+}
+
+.nav-tree {
+    flex-grow: 1;
+    font-size: 0.8rem;
+
+    overflow-y: auto !important; /* Luôn sẵn sàng scroll dọc */
+    overflow-x: hidden !important; /* Cấm tuyệt đối scroll ngang */
+    display: block !important;
+    /* Tùy chỉnh thanh scroll đẹp cho Opera/Chrome/FF */
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-bar) transparent;
+}
+
+.nav-tree i {
+    padding-right: 0.6em;
+}
+
+/* Tùy chỉnh thanh cuộn siêu mỏng */
+.nav-tree::-webkit-scrollbar { width: 1px; }
+.nav-tree::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 10px; }
+
+.nav-item {
+    padding: 6px 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Đây là chìa khóa để không bị scroll ngang */
+}
+
+.nav-item:hover {
+    background-color: rgba(144, 157, 171, 0.12);
+    color: var(--text-white);
+}
+
+.nav-sub {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid var(--border-default);
+/*    margin-top: 4px;*/
+/*    margin-bottom: 4px;*/
+}
+
+.folder { font-weight: 600; color: var(--text-white); }
+.file { font-family: 'ui-monospace', monospace; font-size: 12px; color: var(--text-muted); }
+
+/* 4. Main Content Area */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-main);
+    min-height: 100vh;
+}
+
+.main-nav {
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border-default);
+    background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.5em;
+    position: sticky;
+    top: 0;
+}
+
+.main-nav div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px; min-width: 30px; 
+}
+
+.main-nav img {
+    height: 30px;       /* Bắt buộc cao bằng div cha */
+    width: 100%;        /* Phủ kín chiều ngang */
+    object-fit: cover;  /* Quan trọng: Giữ tỉ lệ ảnh, cắt bớt phần thừa thay vì làm méo ảnh */
+    display: block;
+    max-height: 30px;
+}
+.main-nav i {
+    font-size: 1.2em;
+}
+
+.main-nav .nav-pointer{
+    cursor: pointer;
+}
+
+.search-bar {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-default);
+    padding: 6px 16px;
+    border-radius: var(--radius-md);
+    width: 100%;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    justify-content: flex-start !important;
+}
+
+.search-bar:hover { border-color: var(--text-muted); }
+.slash {
+    border: 1px solid var(--border-default);
+    padding: 1px 6px;
+    border-radius: 4px;
+    background-color: var(--bg-canvas);
+    font-size: 11px;
+}
+
+.content-body {
+    padding: 32px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-white);
+}
+
+/* 5. AI Input Zone (Modern & Rounded) */
+.ai-input-zone {
+    background-color: var(--bg-canvas);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.ai-input-zone textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-white);
+    font-family: inherit;
+    font-size: 15px;
+    resize: none;
+    height: 80px;
+    outline: none;
+}
+
+.ai-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-default);
+}
+
+.ai-btns button {
+    background-color: #21262d;
+    border: 1px solid var(--border-default);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    margin-right: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-send {
+    background-color: var(--accent-green);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* 6. Feed Cards (Modern Card) */
+.feed-card {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: background 0.2s;
+}
+
+.feed-card:hover { background-color: rgba(255,255,255,0.02); }
+
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5em }
+.repo-link { color: var(--accent-mint-lighter); font-weight: 600; text-decoration: none; font-size: 15px; }
+.star-btn {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-default);
+    color: var(--text-white);
+    border-radius: var(--radius-sm);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/*.feed-card {
+    background-color: #1A1C1A;
+    border: 1px solid #2D2624;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}*/
+
+.card-meta {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.card-meta > button > i {
+    margin-right: 0.5em;
+}
+
+/* 7. Sidebar Phải */
+.right-panel {
+    width: 320px;
+    padding: 32px 20px;
+/*    border-left: 1px solid var(--border-default);*/
+    flex-shrink: 0;
+}
+
+.news-card {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    box-shadow: var(--box-left);
+}
+
+.news-card h3 {
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: var(--text-white);
+}
+
+.news-card ul { list-style: none; }
+.news-card li {
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 2px solid var(--accent-mint);
+}
+
+.news-card p { margin: 4px 0 0 0; font-size: 13px; color: var(--text-primary); }
+
+/* 8. Modal Tìm Kiếm (Glassmorphism) */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-close {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--bg-canvas);
+    width: 45vw;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    z-index: 1001;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    margin-top: 5vh;
+}
+
+#modalInput {
+    width: 100%;
+    background-color: var(--bg-main);
+    border: 2px solid var(--accent-mint);
+    padding: 12px 16px;
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    outline: none;
+}
+
+.card-media {
+    width: 100%;           /* Chiều rộng khối bao ngoài */
+    height: 30em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #010409; /* Nền tối để hợp với ảnh contain */
+    border: 1px solid #30363d;
+    border-radius: 12px;   /* Bo góc đồng bộ với feed card */
+    overflow: hidden;      /* Cắt phần thừa nếu có */
+    margin: 1em 0;
+}
+
+.card-media iframe{
+    border: 1px solid #30363d;
+    width:100%;
+    height:300px;
+}
+
+.card-media img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;   /* Thu phóng ảnh nhưng giữ nguyên tỉ lệ, nằm gọn trong div */
+    display: block;
+}
+
+.theme-change {
+    display: flex;
+    flex-direction: column;
+}
+.theme-change button {
+    text-align: left;
+    padding: 0.8em 0.3em;
+    background-color: var(--bg-canvas);
+    border: unset;
+    color: var(--text-primary);
+}
+.theme-change button:not(:last-child) {
+    border-bottom: 1px solid var(--text-primary);
+}
+.theme-change button i {
+    margin: 0 0.5em;
+}
+.screen-767 {
+    display: none !important;
+}
+.screen-max {
+    display: block !important;
+}
+
+.popup {
+    margin-top: 30vh;
+    padding: 1.3em;
+}
+
+.popup-title {
+    display: flex;
+    align-items: center;
+}
+
+.popup-title i {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.popup-title h1 {
+    margin-bottom: 0 !important;
+    flex: 1;
+    margin-right: 0.5em;
+    color: var(--text-muted);
+}
+
+.popup-content {
+    padding: 1em;
+    margin: 1em 0;
+}/* 1. Reset & Font Setup */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+:root {
     /* GitHub Dark Dimmed Palette */
     --bg-main: #18211C;
     --ghost-red-green: #1F1D1A;
