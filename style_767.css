@@ -30,6 +30,7 @@
         padding-right: 2em;
         border-right: 1px solid var(--border-default);
         padding-top: 1em; padding-bottom: 1em;
+        font-size: 1.1em;
     }
     .main-nav {
         align-items: center;
